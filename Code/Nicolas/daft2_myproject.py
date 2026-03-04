@@ -33,10 +33,11 @@ def do_get(url):
     print(r.text)                      # Antwort-Body ausgeben (simpel)
 
 
-def do_post(url):
-    r = requests.post(url, timeout=20) # Einfacher POST Request ohne Variablen
-    r.raise_for_status()               # Bricht ab, wenn HTTP Fehler
-    print(r.text)                      # Antwort-Body ausgeben (simpel)
+def do_post(url, key, value):
+    data = {key: value}                # Erstellt ein Dictionary mit dem Formularfeld
+    r = requests.post(url, data=data)  # Sendet POST Request mit diesen Daten
+    r.raise_for_status()               # Stoppt bei HTTP Fehler
+    print(r.text)                      # Antwort anzeigen
 
 
 def usage():
@@ -44,7 +45,7 @@ def usage():
     print("  python myproject.py cookies list <url>")
     print("  python myproject.py title <url>")
     print("  python myproject.py get <url>")
-    print("  python myproject.py post <url>")
+    print("  python myproject.py post <url> <key> <value>")
 
 
 def main():
@@ -83,14 +84,14 @@ def main():
 
     # post <url>
     if command == "post":
-        if len(sys.argv) == 3:
-            url = sys.argv[2]          # URL ist das zweite Argument (nach post)
-            do_post(url)               # POST Request ausführen
+        if len(sys.argv) == 5:
+            url = sys.argv[2]  # Ziel-URL
+            key = sys.argv[3]  # Name des Formularfeldes
+            value = sys.argv[4]  # Wert des Formularfeldes
+            do_post(url, key, value)  # POST Request ausführen
         else:
-            usage()                    # Falsche Eingabe -> Hilfe anzeigen
-        return
-
-    usage()                            # Unbekannter Command -> Hilfe anzeigen
+            usage()
+        return                            # Unbekannter Command -> Hilfe anzeigen
 
 
 if __name__ == "__main__":             # Stellt sicher, dass main nur beim direkten Start läuft
