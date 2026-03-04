@@ -25,7 +25,7 @@ def handle_get(parameter=None, url=None):
             print("Titel: ", driver.title)
         elif parameter == "h1":
             element = driver.find_element(By.TAG_NAME, "h1")
-            print("H1: ", element.text)
+            print("Überschrift: ", element.text)
         elif parameter == "img":
             images = driver.find_elements(By.TAG_NAME, "img")
             if not images:
@@ -60,11 +60,18 @@ def handle_post(subcommand=None, url=None):
     driver.get(url)
 
     try:
+        # Eingabefeld finden
         username_input = driver.find_element(By.ID, "username")
         password_input = driver.find_element(By.ID, "password")
 
-        username_input.send_keys("tom.smith")
+        # Automatisch ausfüllen
+        username_input.send_keys("tomsmith")
         password_input.send_keys("SuperSecretPassword!")
+
+        # Login-Button klicken
+        login_button = driver.find_element(By.CSS_SELECTOR, "button[type='submit']")
+        login_button.click()
+
 
         print("Login-Daten wurden automatisch eingetragen.")
     except Exception as e:
