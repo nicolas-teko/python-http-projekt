@@ -6,9 +6,12 @@ from selenium.webdriver.common.by import By
 # GET-Methode: Seite öffnen + Scraping
 # -----------------------------
 
-def handle_get(parameter=None):
+def handle_get(parameter=None, url=None):
+    if url is None:
+        url = "https://wikipedia.org"
+
     driver = webdriver.Edge()
-    driver.get("https://wikipedia.org")
+    driver.get(url)
 
     if parameter is None:
         print("Seite wurde geöffnet")
@@ -42,21 +45,27 @@ def handle_get(parameter=None):
 # POST-Methode: Formular ausfüllen
 # -----------------------------
 
-def handle_post(subcommand=None):
+def handle_post(subcommand=None, url=None):
     if subcommand is None:
         print("Bitte Subcommand angeben, (z.B. 'login')")
         return
     if subcommand.lower() != "login":
         print(f"Unbekannter Subcommand '{subcommand}' für post")
         return
+
+    if url is None:
+        url = "https://the-internet.herokuapp.com/login"
+
     driver = webdriver.Edge()
-    driver.get("https://the-internet.herokuapp.com/login")
+    driver.get(url)
 
     try:
         username_input = driver.find_element(By.ID, "username")
         password_input = driver.find_element(By.ID, "password")
+
         username_input.send_keys("tom.smith")
         password_input.send_keys("SuperSecretPassword!")
+
         print("Login-Daten wurden automatisch eingetragen.")
     except Exception as e:
         print("Fehler", e)
@@ -68,19 +77,29 @@ def handle_post(subcommand=None):
 # Cookies-Methode: Cookies abrufen
 # -----------------------------
 
-def handle_cookies(subcommand=None):
+def handle_cookies(subcommand=None, url=None):
+
+    # Standart URL
+    if url is None:
+        url = "https://wikipedia.org"
+
+    # Wenn Subcommand fehlt
     if subcommand is None:
         print("Bitte Subcommand angeben, (z.B. 'list')")
         return
 
+    # Wenn falscher Command
     if subcommand.lower() != "list":
         print("Unbekannter Cookie-Subcommand!!!")
         return
+
     driver = webdriver.Edge()
-    driver.get("https://wikipedia.org")
+    driver.get(url)
 
     try:
         cookies = driver.get_cookies()
+        if not cookies:
+            print("Keine Cookies gefunden.")
         for cookie in cookies:
             print(cookie["name"], cookie["value"])
 
@@ -89,6 +108,30 @@ def handle_cookies(subcommand=None):
 
     input("Drücke Enter zum Beenden...")
     driver.quit()
+
+# -----------------------------
+# Help Funktion zum anzeigen der Man Page
+# -----------------------------
+def handle_help():
+    print("""
+MyProject CLI - Übersicht der Befehle
+
+Verwendung:
+    python myproject.py <command> [parameter] [url]
+
+Befehle:
+    get [titel|h1|img] [url]        Öffnet eine Seite und zeigt Titel, H1 oder alle Bilder
+    post login [url]                Füllt Login-Daten automatisch ein (Testseite)
+    cookies list [url]              Listet alle Cookies der angegebenen Seite
+    --help                          Zeigt diese Hilfe an
+
+Beispiele:
+    python myproject.py get titel https://google.com
+    python myproject.py post login
+    python myproject.py cookies list https://wikipedia.org
+""")
+
+
 
 # -----------------------------
 # Main: CLI
@@ -100,12 +143,29 @@ if __name__ == "__main__":
     else:
         command = sys.argv[1].lower()
 
-    if command == "get":
-        handle_get(sys.argv[2] if len(sys.argv) == 3 else None)
-    elif command == "post":
-        handle_post(sys.argv[2] if len(sys.argv) == 3 else None)
-    elif command == "cookies":
-        handle_cookies(sys.argv[2] if len(sys.argv) == 3 else None)
-    else:
-        print("Unbekannter Command!!!")
+        parameter = None
+        url = None
+
+        # Prüfen ob parameter mit URL oder nur URL
+        if len(sys.argv) >=3:
+            if sys.argv[2].startswith("http"):
+                url = sys.argv[2]
+            else:
+                parameter = sys.argv[2]
+
+        # Viertes Argument prüfen parameter + URL
+        if len(sys.argv) >= 4:
+            url = sys.argv[3]
+
+        # Funktionen Aufrufen
+        if command == "get":
+            handle_get(parameter, url)
+        elif command == "post":
+            handle_post(parameter, url)
+        elif command == "cookies":
+            handle_cookies(parameter, url)
+        elif command == "--help":
+            handle_help()
+        else:
+            print("Unbekannter Command!!!")
 
