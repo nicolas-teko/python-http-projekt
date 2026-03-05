@@ -6,6 +6,8 @@
 2. **POST (login)** öffnet eine Test-Loginseite und füllt Benutzername/Passwort automatisch aus
 3. **COOKIES (list)** öffnet eine Webseite und listet alle Cookies (Name + Value) auf
 
+**Wichtiges!**
+1. Wenn man eine Webseite als Parameter angibt, muss man immer mit http:// oder https:// starten da der Parameter erst dann zum tragen kommt. (Bsp. python myproject.py get titel https://google.com)
 ---
 
 ## Ablauf
@@ -25,8 +27,8 @@ cd C:\Users\DEINNAME\Desktop\meinprojekt
 pip install selenium
 ```
 
-**Wichtig:** Der Code nutzt `webdriver.Edge()`.  
- **Microsoft Edge** installieren wenn nicht vorhanden, und Selenium muss den passenden Driver finden (meist automatisch).
+**Wichtig:** Der Code nutzt `webdriver.Chrome()`.  
+ **Google Chrome** installieren wenn nicht vorhanden, und Selenium muss den passenden Driver finden (meist automatisch).
 
 ---
 
