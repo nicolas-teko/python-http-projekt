@@ -7,7 +7,7 @@
 3. **COOKIES (list)** öffnet eine Webseite und listet alle Cookies (Name + Value) auf
 
 **Wichtiges!**
-1. Wenn man eine Webseite als Parameter angibt, muss man immer mit http:// oder https:// starten da der Parameter erst dann zum tragen kommt. (Bsp. python myproject.py get titel https://google.com)
+Wenn man eine Webseite als Parameter angibt, muss man immer mit http:// oder https:// starten da der Parameter erst dann zum tragen kommt. (Bsp. python myproject.py get titel https://google.com)
 ---
 
 ## Ablauf
