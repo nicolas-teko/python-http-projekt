@@ -1,4 +1,4 @@
-# Selenium Browser CLI in Python (GET / POST / Cookies) NicolasW, Yves, Christian und Luca
+# Python HTTP Projekt (GET / POST / Cookies) NicolasW, Yves, Christian und Luca
 
 ## Funktionen
 1. **GET** öffnet eine Webseite im Chrome Browser  
@@ -11,7 +11,7 @@
 
 ---
 
-## Ablauf
+## Anleitung
 
 ### 1. Terminal öffnen (1 Session)
 Wechsle im Terminal in den Ordner, in dem deine Datei liegt (z. B. `myproject.py`).
@@ -123,3 +123,26 @@ Drücke Enter zum Beenden...
 ```
 
 Erst danach wird der Browser geschlossen (`driver.quit()`).
+
+## Verwendete Technologien und Konzepte
+
+### Selenium
+Selenium ist eine Bibliothek zur automatisierten Steuerung von Webbrowsern. Damit kann ein Programm Webseiten öffnen, auf Elemente klicken, Formulare ausfüllen oder Inhalte auslesen. So als würde ein Benutzer den Browser selbst bedienen. In diesem Projekt wird Selenium verwendet, um den Chrome-Browser automatisch zu starten, Webseiten zu laden und Informationen aus dem HTML der Seite auszulesen.
+...
+
+### HTTP
+HTTP (Hypertext Transfer Protocol) ist das grundlegende Protokoll des Webs. Es definiert, wie ein Client (z. B. ein Browser) eine Anfrage an einen Webserver sendet und wie der Server darauf antwortet. Typische HTTP-Methoden sind wie oben GET zum Abrufen von Daten und POST zum Senden von Daten an einen Server, beispielsweise beim Login in ein Formular.
+...
+
+### Cookies
+Cookies sind kleine Datensätze, die eine Webseite im Browser speichert. Sie enthalten meist Informationen über eine Sitzung, Einstellungen oder Benutzeridentifikation. Webserver können Cookies nutzen um Benutzer wiederzuerkennen oder Login-Sessions am laufen zu halten. In diesem Projekt werden Cookies einer Webseite ausgelesen und im Terminal mit ihrem Namen und Wert dann angezeigt.
+...
+
+### Web Scraping
+Web Scraping bezeichnet das automatisierte Auslesen von Informationen aus Webseiten. Dabei wird der HTML-Inhalt einer Seite analysiert, um  Elemente wie Überschriften, Bilder oder Texte auszulesen. In diesem Projekt wird wie oben gennant Selenium verwendet, um Inhalte wie den Seitentitel, H1-Überschriften oder Bild-URLs aus einer geladenen Webseite zu sammeln.
+...
+
+### WebDriver
+Der WebDriver ist hier die Schnittstelle zwischen Selenium und den Webbrowser. In diesem Projekt wird der Chrome WebDriver verwendet, der über webdriver.Chrome() gestartet wird und die Steuerung des Chrome-Browser übernimmt.
+...
+
