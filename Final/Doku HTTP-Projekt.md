@@ -1,7 +1,7 @@
 # Selenium Browser CLI in Python (GET / POST / Cookies) NicolasW, Yves, Christian und Luca
 
 ## Funktionen
-1. **GET** öffnet eine Webseite im Microsoft Edge Browser  
+1. **GET** öffnet eine Webseite im Chrome Browser  
    - optional wird **Titel**, **H1** oder **alle Bild-URLs** ausgelesen
 2. **POST (login)** öffnet eine Test-Loginseite und füllt Benutzername/Passwort automatisch aus
 3. **COOKIES (list)** öffnet eine Webseite und listet alle Cookies (Name + Value) auf
@@ -18,7 +18,9 @@ Wechsle im Terminal in den Ordner, in dem deine Datei liegt (z. B. `myproject.py
 Beispiel:
 ```bash
 cd C:\Users\DEINNAME\Desktop\meinprojekt
+
 ```
+<img width="1304" height="235" alt="Konsole_move_to_project" src="https://github.com/user-attachments/assets/35f02f7c-9c56-4047-878b-108f8d543fcc" />
 
 ---
 
