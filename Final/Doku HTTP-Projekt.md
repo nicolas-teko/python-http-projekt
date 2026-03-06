@@ -40,6 +40,7 @@ pip install selenium
 ```bash
 python myproject.py --help
 ```
+<img width="1205" height="592" alt="Konsole_help" src="https://github.com/user-attachments/assets/b5286ad4-2e51-44ba-ba8e-d38c11a7b496" />
 
 ---
 
@@ -71,6 +72,8 @@ python myproject.py get img https://wikipedia.org
 python myproject.py get titel
 ```
 
+<img width="1425" height="422" alt="Konsole_GET_title" src="https://github.com/user-attachments/assets/c0b70d56-7dd2-4117-b751-59df095af7ec" />
+
 ---
 
 ## POST: Login automatisch ausfüllen
@@ -79,6 +82,7 @@ python myproject.py get titel
 ```bash
 python myproject.py post login
 ```
+<img width="1345" height="778" alt="Konsole_POST_Login" src="https://github.com/user-attachments/assets/1ef01e40-b162-4440-aae9-2d2e4654c569" />
 
 Default URL:
 - `https://the-internet.herokuapp.com/login`
@@ -101,6 +105,7 @@ python myproject.py post login https://the-internet.herokuapp.com/login
 ```bash
 python myproject.py cookies list
 ```
+<img width="1527" height="409" alt="Konsole_cookies_list" src="https://github.com/user-attachments/assets/1465838a-5499-41f3-abf6-55bdb0a69ede" />
 
 ### COOKIES: Cookies einer bestimmten Seite anzeigen
 ```bash
